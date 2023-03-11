@@ -1,8 +1,10 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import Navbar from '../components/Navbar'
 import Banner from '../components/Banner'
+import SmallCard from '../components/SmallCard'
+import MediumCard from '../components/MediumCard'
+import LargeCard from '../components/LargeCard'
 
 const Home: NextPage = ({exploreData}) => {
 
@@ -17,19 +19,47 @@ const Home: NextPage = ({exploreData}) => {
       <Banner />
       
       <main className='max-w-7xl mx-auto px-8 sm:px-16'>
+
         <section className='pt-6'>
           <h2 className='text-4xl font-semibold pb-5'>Explore Nearby</h2>
-          {/* FETCH FROM API */}
-          {exploreData.map((data) => (
-            <div key={data.id}>
-              <p>{data.name}</p>
-              <img src={data.imageUrl} alt={data.name} />
-              <p>{`${data.price} ${data.priceCurrency}`}</p>
-              <p>{`${data.lat}, ${data.lng}`}</p>
-            </div>
-          ))}
-
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
+            {/* FETCH FROM API */}
+            {exploreData.map((i) => (
+              <SmallCard 
+                key={i.name}
+                img={i.imageUrl}
+                name={i.name}
+                price={`${i.price} ${i.priceCurrency}`}
+                location={`${i.lat}, ${i.lng}`}
+              />
+            ))}
+          </div>
         </section>
+
+        {/* npm i tailwind-scrollbar-hide then go to tailwind.config and add plugin */}
+        <section>
+          <h2 className='text-4xl font-semibold py-8'>Live Anywhere</h2>
+          <div className='flex space-x-3 overflow-scroll scrollbar-hide p-3 -ml-3'>
+            {/* only want 4 from array */}
+            {exploreData?.slice(0,4).map(({imageUrl, name}) => (
+              <MediumCard 
+                key={name}
+                img={imageUrl}
+                name={name}
+              />
+            ))}
+          </div>
+        </section>
+
+        <section>
+          <LargeCard 
+            img='/largecard.jpg'
+            name='The Greatest Outdoors'
+            description='Wishlists curated by Airbnb.'
+            buttonText='Get Inspired'
+          />
+        </section>
+
       </main>
 
     </div>
