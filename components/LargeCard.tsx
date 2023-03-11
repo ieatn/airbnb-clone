@@ -1,5 +1,6 @@
 import Image from 'next/image'
 
+//@ts-ignore
 const LargeCard = ({ name, description, buttonText }) => {
     return ( 
         <div className="relative py-16 cursor-pointer">
