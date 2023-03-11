@@ -54,7 +54,6 @@ const Home: NextPage = ({exploreData}) => {
 
         <section>
           <LargeCard 
-            img='/largecard.jpg'
             name='The Greatest Outdoors'
             description='Wishlists curated by Airbnb.'
             buttonText='Get Inspired'
