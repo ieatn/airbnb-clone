@@ -16,7 +16,7 @@ const Home: NextPage = ({exploreData}) => {
         <title>Airbnb Clone</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      {/* @ts-ignore */}
       <Navbar />
       <Banner />
       
