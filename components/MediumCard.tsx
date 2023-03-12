@@ -1,3 +1,4 @@
+{/* @ts-ignore */}
 const MediumCard = ({ img, name, price }) => {
     return ( 
         <div className="cursor-pointer hover:scale-105 transform transition duration-300 ease-out">
