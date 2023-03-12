@@ -2,7 +2,7 @@ import { format } from "date-fns";
 import { useRouter } from "next/router";
 import Footer from "../components/Footer";
 import InfoCard from "../components/InfoCard";
-import MapBox from "../components/Map";
+import MapBox from "../components/MapBox";
 import Navbar from "../components/Navbar";
 
 
@@ -20,6 +20,8 @@ const Search = ({searchResults}) => {
     return ( 
         <div>
             <Navbar placeholder={`${location} | ${range} | ${noOfGuests} guests`}/>
+
+
             <main className="flex">
                 <section className="flex-grow pt-14 px-6">
                     <p className="text-sm">300+ Stays for {noOfGuests} number of guests</p>
@@ -42,9 +44,9 @@ const Search = ({searchResults}) => {
                                 key={name}
                                 img={imageUrl}
                                 name={name}
-                                price={`${price}`}
+                                price={`$${price}`}
                                 // do not have values for this api so have a backup hard coded string
-                                description={description || 'Nice house'}
+                                description={description || '2 guests 3 bedrooms 1 bed 2 shared bathrooms Wifi Kitchen'}
                                 star={star || '5'}
                                 location={`Stays in ${location}`}
                                 total={total || '$50'}
@@ -52,10 +54,14 @@ const Search = ({searchResults}) => {
                         ))}
                     </div>
                 </section>
+                
                 <section className="hidden xl:inline-flex xl:min-w-[600px]">
                     <MapBox searchResults={searchResults}/>
                 </section>
             </main>
+
+
+
             <Footer />
         </div>
     );

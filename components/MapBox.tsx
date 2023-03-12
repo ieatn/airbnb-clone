@@ -37,37 +37,33 @@ const MapBox = ({searchResults}) => {
             mapboxAccessToken={process.env.mapbox_key}
             initialViewState={{
                 // @ts-ignore
-                longitude: center.longitude,
+                longitude: -100,
                 // @ts-ignore
-                latitude: center.latitude,
+                latitude: 20,
                 zoom: 3.5
             }}
+            attributionControl={false}
             // @ts-ignore
-            onViewportChange={(nextViewport) => setViewport(nextViewport)}
+            // onViewportChange={(nextViewport) => setViewport(nextViewport)}
         >
-            {/* @ts-ignore */}
-            {searchResults.map(result => (
+            {/* {searchResults.map(result => (
                 <div key={result.name}>
-                    {/* @ts-ignore */}
                     <Marker 
                         longitude={result.lng} 
                         latitude={result.lat} 
-                        // @ts-ignore
                         offsetLeft={-20}
                         offsetTop={-10}
                     >
                         <p className='cursor-pointer text-2xl animate-bounce' onClick={() =>setselectedLocation(result)} role='img' aria-label='push-pin'>📌</p>
                     </Marker>
-                    {/* {selectedLocation.lng === result.lng ? (
+                    {selectedLocation.lng === result.lng ? (
                         <Popup onClose={() => setselectedLocation({})} closeOnClick={true} latitude={result.lat} longitude={result.lng}>
                             {result.name}
                         </Popup>
-                    )} */}
+                    )}
                 </div>
-            ))}
+            ))} */}
         </Map>
-
-
     );
 }
  
